@@ -24,17 +24,20 @@ public class JerseyTestNGTest extends JerseyTestNg.ContainerPerClassTest {
   protected Application configure() {
     return new ResourceConfig(HelloResource.class);
   }
-
-  @Test
-  public void notIntegrationTest() {
+  
+  private void doIt() {
     final String hello = target("hello").request().get(String.class);
     assertEquals("Hello World!", hello);
   }
 
+  @Test
+  public void notIntegrationTest() {
+    doIt();
+  }
+
   @Test(groups = {"integration"})
   public void integrationTest() {
-    final String jello = target("hello").request().get(String.class);
-    assertEquals("Hello World!", jello);
+    doIt();
   }
 
 }
