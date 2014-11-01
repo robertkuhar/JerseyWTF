@@ -2,9 +2,25 @@ JerseyWTF
 =========
 
 JerseyTestNg.ContainerPerClassTest doesn't work if its part of a TestNG Group @Test(groups = {"integration"}).
-It works fine if its not part of any specific group.  What's up with that?
 
-    $ gradle test integrationTest
+Note how gradle test works...
+
+    $ gradle test
+    :compileJava UP-TO-DATE
+    :processResources UP-TO-DATE
+    :classes UP-TO-DATE
+    :compileTestJava UP-TO-DATE
+    :processTestResources UP-TO-DATE
+    :testClasses UP-TO-DATE
+    :test
+    
+    BUILD SUCCESSFUL
+    
+    Total time: 4.661 secs
+
+But gradle integrationTest doesn't...
+
+    $ gradle integrationTest
     :compileJava UP-TO-DATE
     :processResources UP-TO-DATE
     :classes UP-TO-DATE
@@ -31,5 +47,6 @@ It works fine if its not part of any specific group.  What's up with that?
     
     BUILD FAILED
     
-    Total time: 4.696 secs
+    Total time: 3.779 secs
 
+What's up with that?
