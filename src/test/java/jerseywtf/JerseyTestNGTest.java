@@ -25,19 +25,20 @@ public class JerseyTestNGTest extends JerseyTestNg.ContainerPerClassTest {
     return new ResourceConfig(HelloResource.class);
   }
   
-  private void doIt() {
-    final String hello = target("hello").request().get(String.class);
-    assertEquals("Hello World!", hello);
-  }
-
   @Test
   public void notIntegrationTest() {
+    // works like a champ
     doIt();
   }
 
   @Test(groups = {"integration"})
   public void integrationTest() {
+    // NPEs out the wazoo
     doIt();
   }
 
+  private void doIt() {
+    final String hello = target("hello").request().get(String.class);
+    assertEquals("Hello World!", hello);
+  }
 }
