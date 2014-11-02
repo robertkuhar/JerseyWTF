@@ -39,3 +39,7 @@ task integrationTest(type: Test, dependsOn: 'test') {
       includeGroups 'integration'
     }
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.1'
+}
